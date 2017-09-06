@@ -45,7 +45,7 @@ def save(self):
     file=open(CONFIG_PATH, "w")
     self.write(file)
     # config.write(sys.stdout)
-    logging.debug(u"保存配置文件 " + CONFIG_PATH)
+    logging.debug("保存配置文件 " + CONFIG_PATH)
     return
 
 # 动态添加save方法
@@ -57,7 +57,7 @@ def set_file(self, filename):
     global CONFIG_PATH
     CONFIG_PATH=filename
     self.read(CONFIG_PATH)
-    logging.debug(u"重新加载配置文件 " + CONFIG_PATH)
+    logging.debug("重新加载配置文件 " + CONFIG_PATH)
     return
 
 # 动态添加set_file方法
@@ -70,7 +70,7 @@ def initLog():
     import logging.config
     config_path=config.get( "log", "config_path")
     logging.config.fileConfig(config_path)
-    logging.debug(u"加载日志配置 "+config_path)
+    logging.debug("加载日志配置 "+config_path)
     return
 
 #主函数 TEST

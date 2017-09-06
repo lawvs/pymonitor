@@ -1,0 +1,14 @@
+# 单机监控配置文件
+log:
+  config_path: logging.ini
+monitor:
+  tasks:
+    - name: github
+      url: www.github.com
+      interval: 10
+    - name: api
+      url: api.github.com
+      interval: 15
+    - name: google
+      url: www.google.com
+      interval: 15

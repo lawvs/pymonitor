@@ -13,6 +13,9 @@ import os
 import sys
 import time
 import pycurl
+import logging
+
+logger = logging.getLogger()
 
 def curl_webSev(URL):
     _Curl = pycurl.Curl()
@@ -24,7 +27,7 @@ def curl_webSev(URL):
     _Curl.setopt(pycurl.DNS_CACHE_TIMEOUT,30)
     _Curl.setopt(pycurl.URL,URL)
     try:
-        with open(os.path.dirname(os.path.realpath(__file__)) + "/content.txt",'wb') as outfile:
+        with open(os.path.dirname(os.path.realpath(__file__)) + "/content.tmp",'wb') as outfile:
             _Curl.setopt(pycurl.WRITEHEADER,outfile)
             _Curl.setopt(pycurl.WRITEDATA,outfile)
             _Curl.perform()
@@ -42,6 +45,11 @@ def curl_webSev(URL):
     print("Avg download speed:\t%s bytes/s" %_Curl.getinfo(_Curl.SPEED_DOWNLOAD))
 
 if __name__ == '__main__':
+    import logging.config
+    config_path = "logging.ini"  # TODO 优化
+    logging.config.fileConfig(config_path)
+    logger.debug("加载日志配置完成 " + config_path)
+
     if len(sys.argv) < 2:
         url="www.github.com"
     else:
