@@ -6,26 +6,18 @@
 创建时间: 2017-9-3 14:20:21
 '''
 from __future__ import unicode_literals
-import sys
-import os
 import logging
 import logging.config
-import time
-import random
 import yaml
-from multiprocessing import Process
 
 from Monitor import Monitor
-from curl_webSev import curl_webSev
 
 logger = logging.getLogger()
-config={}
-process_list = []
+config={}  #  配置文件 TODO 相关异常处理
+process_list = []  # 进程列表
 
-# 任务
+# 任务管理
 def manage():
-    # TODO 启动队列处理
-
     # 新建任务
     global process_list
     logger.debug("任务个数 " + str(len(config["monitor"]["tasks"])))
