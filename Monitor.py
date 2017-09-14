@@ -16,8 +16,9 @@ import multiprocessing
 import pycurl
 
 # 解决中文编码问题
-reload(sys)
-sys.setdefaultencoding( "utf-8" )
+if sys.version < "3":  # python2
+    reload(sys)
+    sys.setdefaultencoding( "utf-8" )
 
 logger = logging.getLogger()
 
