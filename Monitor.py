@@ -70,7 +70,7 @@ class Monitor(multiprocessing.Process):  # TODO 类优化
         while work:
             logger.debug("pid:" + repr(os.getpid()) + " " +self.name + " 正在监测 " + self.url)
             result = self.curl_webSev()  # 监测
-            logger.debug("pid:" + repr(os.getpid()) + " " +self.name + " 监测完成 ")
+            logger.debug("pid:" + repr(os.getpid()) + " " +self.name + " 监测完成")
             handleResult(result)  # 结果处理
             time.sleep(self.interval)
         logger.debug("pid:" + repr(os.getpid()) +  " 监测任务结束 " + self.url)
