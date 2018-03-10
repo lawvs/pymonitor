@@ -49,6 +49,9 @@ class Monitor(multiprocessing.Process):  # TODO 类优化
                 _Curl.setopt(pycurl.WRITEHEADER,outfile)
                 _Curl.setopt(pycurl.WRITEDATA,outfile)
                 _Curl.perform()
+        except pycurl.error as e:
+            logger.info(self.name + ' ' + e.args[1])
+            return None
         except Exception as e:
             logger.exception(e)
             return None
